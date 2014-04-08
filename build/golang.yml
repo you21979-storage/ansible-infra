@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: root
+
+  vars:
+    tmpdir: /tmp
+  tasks:
+    - name: golang download
+      get_url: url=https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz dest={{tmpdir}} mode=0440
+    - name: extend
+      command: tar zxvf {{tmpdir}}/go1.2.1.linux-amd64.tar.gz chdir=/usr/local
+
